@@ -90,7 +90,7 @@ compareEqual('getLast',actual,expected, 'empty array');
 //    value is found and false otherwise. Use a loop;
 //    DO NOT use Array.includes, Array.indexOf, or Array.find 
 function find( value, array ){
-  for (element of array) {
+  for (let element of array) {
     if (value === element) return true;
   }
   return false;
@@ -127,11 +127,29 @@ console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
 console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
 
 // 9. Function to return the sum of all numbers in an array
-function sumAll( ) {
+function sumAll( array ) {
   let sum = 0
-  // TODO: loop to add items
+  for (let value of array) {
+    sum += value
+  }
   return sum;
 }
+
+// tests
+// case 1
+let testCase = 'empty array';
+let testArray = [];
+actual = sumAll(testArray);
+expected = 0;
+compareEqual('sumAll', actual, expected, testCase);
+// case 2
+testCase = 'populated array';
+testArray = [15,25,35,5,10,1,8,1]
+actual = sumAll(testArray);
+expected = 100
+compareEqual('sumAll',actual,expected,testCase);
+
+
 
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
@@ -139,7 +157,7 @@ function sumAll( ) {
 
 function findPositives(array) {
   let positives = [];
-  for (element of array) {
+  for (let element of array) {
     if (element > 0) positives.push(element);
   }
   return positives;
@@ -147,12 +165,12 @@ function findPositives(array) {
 
 // Is it ok if the arrays contain the same values but aren't in the same order?
 // I'm going to assume it is. This function should return the positives in the order in which they appear,
-// but it will be good practice to make something that compares the two arrays.
+// but it might be good practice to make something that compares the two arrays.
 // So for me I'll say the arrays are equal if they contain the same set of numbers, regardless of order.
 
 // case 1:
-let testCase = 'empty array';
-let testArray = [];
+testCase = 'empty array';
+testArray = [];
 expectedArray = [];
 functionResult = findPositives(testArray);
 expected = true;
@@ -200,10 +218,10 @@ Courtesy of projecteuler.net
 */
 
 function solution(number){
-  sum = 0
+  let sum = 0
   for (let i = 0; i < number; i++) {
-    threes = i % 3;
-    fives = i % 5;
+    let threes = i % 3;
+    let fives = i % 5;
     if (threes === 0 || fives === 0) {
       sum += i
     }
