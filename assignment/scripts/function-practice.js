@@ -24,7 +24,7 @@ console.log(helloName('Jasmine'))
 function addNumbers( firstNumber, secondNumber ) {
   return firstNumber + secondNumber;
 }
-console.log('Testing addNumbers: ')
+console.log('Testing addNumbers: ');
 
 let num1 = 2;
 let num2 = 100;
@@ -38,12 +38,12 @@ function multiplyThree( num1, num2, num3 ){
   return num1*num2*num3;
 }
 
+console.log('Testing multiplyThree');
 num1 = 2;
 num2 = 20;
 num3 = 30
 expected = 1200;
 actual = multiplyThree(num1,num2,num3);
-message = expected === actual ? 'Test passed!' : 'Test Failed!';
 console.log(message + ` Actual: ${actual}, Expected: ${expected}`);
 
 
@@ -65,8 +65,21 @@ console.log( 'isPositive - should say false', isPositive(-3) );
 // 6. Function to return the _last_ item in an array. If the 
 //    array is empty, return `undefined`.
 function getLast( array ) {
-
+  if (array.length === 0) return undefined;
+  return array[array.length-1]
 }
+console.log('Testing getLast:');
+console.log('getLast populated array');
+let someArray = [1,2,3,4,5];
+expected = 5;
+actual = getLast(someArray);
+console.log(message + ` Actual: ${actual}, Expected: ${expected}`);
+
+console.log('getLast empty array');
+someArray = [];
+expected = undefined;
+actual = getLast(someArray);
+console.log(message + ` Actual: ${actual}, Expected: ${expected}`);
 
 // 7. Function to find a value in an array. Return true if the 
 //    value is found and false otherwise. Use a loop;
