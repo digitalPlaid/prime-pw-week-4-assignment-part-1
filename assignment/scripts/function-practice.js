@@ -21,14 +21,21 @@ function helloName( name ) {
 console.log(helloName('Jasmine'))
 
 // 3. Function to add two numbers together & return the result
-function addNumbers( firstNumber ) {
-  // return firstNumber + secondNumber;
+function addNumbers( firstNumber, secondNumber ) {
+  return firstNumber + secondNumber;
 }
+console.log('Testing addNumbers: ')
 
+let num1 = 2;
+let num2 = 100;
+let expected = 102;
+let actual = addNumbers(num1,num2);
+let message = expected === actual ? 'Test passed!' : 'Test Failed!';
+console.log(message + ` Actual: ${actual}, Expected: ${expected}`);
 
 // 4. Function to multiply three numbers & return the result
 function multiplyThree( ){
-
+  
 }
 
 
