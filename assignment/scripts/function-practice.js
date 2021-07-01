@@ -150,27 +150,67 @@ function findPositives(array) {
 // but it will be good practice to make something that compares the two arrays.
 // So for me I'll say the arrays are equal if they contain the same set of numbers, regardless of order.
 
+// case 1:
 let testCase = 'empty array';
 let testArray = [];
-expected = [];
-actual = findPositives(testArray);
-
-
+expectedArray = [];
+functionResult = findPositives(testArray);
+expected = true;
+actual = compareArrays(expectedArray, functionResult);
+compareEqual('findPositives', actual, expected, testCase);
+// case 2:
 testCase = 'no positives';
 testArray = [-1,-2,-3,-1234];
-
+expectedArray = [];
+functionResult = findPositives(testArray);
+actual = compareArrays(expectedArray, functionResult);
+compareEqual('findPositives', actual, expected, testCase);
+// case 3:
 testCase = 'some positives';
 testArray = [12,54,-100,234,-2,0,100,-200];
-
-
+expectedArray = [12,54,234,100];
+functionResult = findPositives(testArray);
+actual = compareArrays(expectedArray, functionResult);
+compareEqual('findPositives', actual, expected, testCase);
+// case 4:
 testCase = 'all positives';
 testArray = [1,2,3,4,234,653,4576,234];
+expectedArray = [1,2,3,4,234,653,4576,234];
+functionResult = findPositives(testArray);
+actual = compareArrays(expectedArray, functionResult);
+compareEqual('findPositives', actual, expected, testCase);
+
 
 
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
 //     CodeWars(https://www.codewars.com/). Then describe it 
 //     here in a comment, write the function, and test it!
+
+// https://www.codewars.com/kata/514b92a657cdc65150000006
+
+/*    *****    DESCRIPTION    *****
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+
+Note: If the number is a multiple of both 3 and 5, only count it once. Also, if a number is negative, return 0(for languages that do have them)
+
+Courtesy of projecteuler.net
+*/
+
+function solution(number){
+  sum = 0
+  for (let i = 0; i < number; i++) {
+    threes = i % 3;
+    fives = i % 5;
+    if (threes === 0 || fives === 0) {
+      sum += i
+    }
+  }
+  return sum;
+}
+
 
 
 
@@ -179,12 +219,31 @@ testArray = [1,2,3,4,234,653,4576,234];
 // function to compare if two arrays contain the same set of numbers, regardless of order
 function compareArrays(arr1, arr2) {
   if (arr1.length !== arr2.length) return false;
+  // it doesn't matter that the sorting isn't done properly by numeric value - as long as the sorting is consistent
+  arr1.sort(); 
+  arr2.sort();
   for (let i = 0; i < arr1.length; i++) {
-    
+    if(arr1[i] !== arr2[i]) return false;
   }
-
+  return true;
 }
-
+// tests for this function
+x = [4,4,3,2,1]
+y = [1,1,3,4,2]
+actual = compareArrays(x,y);
+expected = false;
+compareEqual('compareArrays', actual, expected, 'not equal');
+y = [4]
+compareEqual('compareArrays', actual, expected, 'not equal');
+y = [1,2,3,4,4]
+actual = compareArrays(x,y);
+expected = true;
+compareEqual('compareArrays', actual, expected, 'equal');
+x = []
+y = []
+expected = true;
+actual = compareArrays(x,y);
+compareEqual('compareArrays', actual, expected, 'equal, empty arrays');
 
 
 // function to test and write out some info that may be useful to the console.
