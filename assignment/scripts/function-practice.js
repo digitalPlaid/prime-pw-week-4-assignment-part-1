@@ -119,8 +119,9 @@ compareEqual('find',actual,expected, 'target value not present');
 // ----------------------
 // 8. Function to check if a letter is the first letter in a 
 //    string. Return true if it is, and false otherwise
-function isFirstLetter(letter, string) {
-
+function isFirstLetter(letter, string) {  
+  if (letter === string[0].toLowerCase()) return true;
+  return false;
 }
 console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
 console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
@@ -136,6 +137,35 @@ function sumAll( ) {
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
 
+function findPositives(array) {
+  let positives = [];
+  for (element of array) {
+    if (element > 0) positives.push(element);
+  }
+  return positives;
+}
+
+// Is it ok if the arrays contain the same values but aren't in the same order?
+// I'm going to assume it is. This function should return the positives in the order in which they appear,
+// but it will be good practice to make something that compares the two arrays.
+// So for me I'll say the arrays are equal if they contain the same set of numbers, regardless of order.
+
+let testCase = 'empty array';
+let testArray = [];
+expected = [];
+actual = findPositives(testArray);
+
+
+testCase = 'no positives';
+testArray = [-1,-2,-3,-1234];
+
+testCase = 'some positives';
+testArray = [12,54,-100,234,-2,0,100,-200];
+
+
+testCase = 'all positives';
+testArray = [1,2,3,4,234,653,4576,234];
+
 
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
@@ -144,6 +174,16 @@ function sumAll( ) {
 
 
 
+
+
+// function to compare if two arrays contain the same set of numbers, regardless of order
+function compareArrays(arr1, arr2) {
+  if (arr1.length !== arr2.length) return false;
+  for (let i = 0; i < arr1.length; i++) {
+    
+  }
+
+}
 
 
 
