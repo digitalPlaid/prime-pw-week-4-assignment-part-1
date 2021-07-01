@@ -34,18 +34,26 @@ let message = expected === actual ? 'Test passed!' : 'Test Failed!';
 console.log(message + ` Actual: ${actual}, Expected: ${expected}`);
 
 // 4. Function to multiply three numbers & return the result
-function multiplyThree( ){
-  
+function multiplyThree( num1, num2, num3 ){
+  return num1*num2*num3;
 }
+
+num1 = 2;
+num2 = 20;
+num3 = 30
+expected = 1200;
+actual = multiplyThree(num1,num2,num3);
+message = expected === actual ? 'Test passed!' : 'Test Failed!';
+console.log(message + ` Actual: ${actual}, Expected: ${expected}`);
 
 
 // 5. Function that will return true if a number is positive, 
 //    or greater than zero, and false otherwise
 function isPositive( number ) {
   if ( number > 0 ){
-    return;
+    return true;
   }
-    return;
+    return false;
 }
 // Call the function to test each outcome (true & false) 
 // Write a separate console.log statement for each outcome
